@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">BookingMedicalExaminatation</string>
+    <string name="user">Tài khoản</string>
+    <string name="pass">Mật khẩu</string>
+    <string name="confirm_pass">Xác nhận mật khẩu</string>
+
+    <string name="login">Đăng nhập</string>
+    <string name="register">Đăng ký</string>
+    <string name="title_register">Đăng ký tài khoản</string>
+    <string name="have_not_account"><![CDATA[<i>Bạn chưa có tài khoản?<u><b><font color=#ffffff>Đăng ký</font></b></u></i>]]></string>
+    <string name="invalid_login">Tài khoản hoặc mật khẩu không hợp lệ. Vui lòng kiểm tra lại</string>
+    <string name="full_name">Họ và tên</string>
+    <string name="id_patient">Mã bệnh nhân</string>
+    <string name="cccd">CMND</string>
+    <string name="job">Nghề nghiệp</string>
+    <string name="national">Quốc gia</string>
+    <string name="ethnic">Dân tộc</string>
+
+    <string name="gender">Giới tính</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="phone">Số điện thoại</string>
+    <string name="date_of_birth">Ngày sinh</string>
+    <string name="email">Email</string>
+    <string name="address">Địa chỉ</string>
+    <string name="register_success">Đăng kí tài khoản thành công!</string>
+    <string name="patient_record">Hồ sơ bệnh nhân</string>
+    <string name="medical_bill">Phiếu khám bệnh</string>
+    <string name="re_examination_schedule">Lịch tái khám</string>
+    <string name="contact">Liên hệ</string>
+    <string name="contact_content">Nội dung liên hệ</string>
+    <string name="appointmentRequest">Đặt lịch khám</string>
+    <string name="info">Thông tin</string>
+    <string name="input_all_infor">Bạn cần điền đầy đủ thông tin</string>
+    <string name="home">Trang chủ</string>
+</resources>

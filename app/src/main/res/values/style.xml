@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="text_title">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/title_text_color</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+    <style name="edit_login">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/title_text_color</item>
+        <item name="android:paddingLeft">30dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingRight">30dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/background_edittext_login</item>
+    </style>
+</resources>
