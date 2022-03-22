@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "75784251094",
+    "project_id": "bookingmedicalexaminatio-e7fa3",
+    "storage_bucket": "bookingmedicalexaminatio-e7fa3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75784251094:android:df5dc2340c778a84a64b77",
+        "android_client_info": {
+          "package_name": "com.example.bookingmedicalexaminatation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75784251094-fh9f23h91k5ruhtqmkttmqseucs44l4c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOFO0Ua0xS5-hjC4g9dVljqe_D_AXztjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "75784251094-fh9f23h91k5ruhtqmkttmqseucs44l4c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
