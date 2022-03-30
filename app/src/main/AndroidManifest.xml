@@ -12,22 +12,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingMedicalExaminatation">
         <activity
-            android:name=".view.login_register.RegisterActivity"
+            android:name=".view.profile.PatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.DoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.login_register.DoctorRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.PatientProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.DoctorProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.bookappointment.BookAppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.login_register.PatientRegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.login_register.LoginActivity"
             android:exported="true">
 
         </activity>
         <activity
-            android:name=".view.login_register.LoginActivity"
-            android:exported="true">
+            android:name=".view.MainActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>

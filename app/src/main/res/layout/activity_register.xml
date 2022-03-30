@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".view.login_register.RegisterActivity">
+        tools:context=".view.login_register.PatientRegisterActivity">
 
         <include
             android:id="@+id/title"
@@ -198,7 +198,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/btn_register"
+                    android:id="@+id/btn_control"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/black"

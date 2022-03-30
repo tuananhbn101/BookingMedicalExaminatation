@@ -10,5 +10,6 @@
     <color name="white_70">#ABFFFFFF</color>
     <color name="black_70">#AB272727</color>
     <color name="color_primary_key">#222020</color>
+    <color name="color_primary">#2390FD</color>
     <color name="title_text_color">#222121</color>
 </resources>

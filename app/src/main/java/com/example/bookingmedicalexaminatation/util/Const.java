@@ -1,8 +1,8 @@
 package com.example.bookingmedicalexaminatation.util;
 
 public interface Const {
-     String userRole = "Bệnh nhân";
-
+     String patientRole = "Patient";
+     String doctorRole = "Doctor";
      interface Account{
           String ACCOUNT_ID = "account_id";
           String USER_NAME = "user_name";

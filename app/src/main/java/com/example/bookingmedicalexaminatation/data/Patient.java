@@ -1,6 +1,6 @@
 package com.example.bookingmedicalexaminatation.data;
 
-public class Account {
+public class Patient {
     private String userId;
     public String userName;
     private String password;
@@ -13,10 +13,10 @@ public class Account {
     private String job;
     private String userRole;
 
-    public Account() {
+    public Patient() {
     }
 
-    public Account(String userId, String username, String password, String email, String fullName, String gender, String birthOfDate, String phone, String address, String job, String userRole) {
+    public Patient(String userId, String username, String password, String email, String fullName, String gender, String birthOfDate, String phone, String address, String job, String userRole) {
         this.userId = userId;
         this.userName = username;
         this.email = email;

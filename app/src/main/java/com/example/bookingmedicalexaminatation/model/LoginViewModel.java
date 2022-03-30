@@ -23,14 +23,13 @@ public class LoginViewModel extends AndroidViewModel {
         storage = new Storage(application);
     }
 
-    public void login(String userName, String passWord) {
-        repository.login(userName, passWord, (accountId, userRole) -> {
+    public void login(String userName, String passWord, String userRole) {
+        repository.login(userName, passWord, userRole, accountId -> {
             if (accountId.isEmpty()) {
                 loginSuccess.postValue(false);
             } else {
                 storage.putAccountId(accountId);
                 storage.putString(Const.Account.USER_NAME, userName);
-                storage.putString(Const.Account.USER_ROLE,userRole);
                 loginSuccess.postValue(true);
             }
         });

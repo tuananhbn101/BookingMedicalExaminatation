@@ -42,11 +42,17 @@ public class LoginActivity extends AppCompatActivity {
     private void action() {
         binding.btnLogin.setOnClickListener(view -> {
             if (checkEmpty()) {
-                loginViewModel.login(binding.etUserName.getText().toString(), binding.etPassword.getText().toString());
+                String userRole = "";
+                if (binding.checkRole.isChecked()) {
+                    userRole = Const.doctorRole;
+                } else {
+                    userRole = Const.patientRole;
+                }
+                loginViewModel.login(binding.etUserName.getText().toString(), binding.etPassword.getText().toString(), userRole);
             }
         });
         binding.btnRegister.setOnClickListener(view -> {
-            startActivity(new Intent(getApplicationContext(), RegisterActivity.class));
+            startActivity(new Intent(getApplicationContext(), PatientRegisterActivity.class));
             finish();
         });
     }

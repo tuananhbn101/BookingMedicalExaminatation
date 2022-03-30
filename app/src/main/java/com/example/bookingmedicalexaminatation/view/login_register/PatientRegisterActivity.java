@@ -8,13 +8,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.bookingmedicalexaminatation.data.Account;
+import com.example.bookingmedicalexaminatation.data.Patient;
 import com.example.bookingmedicalexaminatation.databinding.ActivityRegisterBinding;
 import com.example.bookingmedicalexaminatation.model.RegisterViewModel;
 import com.example.bookingmedicalexaminatation.util.AccountUtil;
 import com.example.bookingmedicalexaminatation.util.Const;
 
-public class RegisterActivity extends AppCompatActivity {
+public class PatientRegisterActivity extends AppCompatActivity {
     private ActivityRegisterBinding binding;
     private RegisterViewModel registerViewModel;
 
@@ -58,28 +58,28 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void action() {
-        binding.btnRegister.setOnClickListener(v -> {
+        binding.btnControl.setOnClickListener(v -> {
             if (checkEmpty()) {
-                registerViewModel.checkUserNameExisted(binding.etUserName.getText().toString().trim());
+                registerViewModel.checkUserNameExisted(binding.etUserName.getText().toString().trim(),Const.patientRole);
             }
         });
-        binding.title.btnBack.setOnClickListener(v -> finish());
+        binding.title.back.setOnClickListener(v -> finish());
     }
 
     private void register() {
-        Account account = new Account();
-        account.setUserId(AccountUtil.createAccountId());
-        account.setUserName(binding.etUserName.getText().toString().trim());
-        account.setPassword(binding.etPassword.getText().toString().trim());
-        account.setEmail(binding.etEmail.getText().toString().trim());
-        account.setFullName(binding.etFullName.getText().toString().trim());
-        account.setGender(binding.etGender.getText().toString().trim());
-        account.setBirthOfDate(binding.etDateOfBirth.getText().toString().trim());
-        account.setPhone(binding.etPhone.getText().toString().trim());
-        account.setAddress(binding.etAddress.getText().toString().trim());
-        account.setJob(binding.etJob.getText().toString().trim());
-        account.setUserRole(Const.userRole);
-        registerViewModel.registerAccount(account);
+        Patient patient = new Patient();
+        patient.setUserId(AccountUtil.createPatientId());
+        patient.setUserName(binding.etUserName.getText().toString().trim());
+        patient.setPassword(binding.etPassword.getText().toString().trim());
+        patient.setEmail(binding.etEmail.getText().toString().trim());
+        patient.setFullName(binding.etFullName.getText().toString().trim());
+        patient.setGender(binding.etGender.getText().toString().trim());
+        patient.setBirthOfDate(binding.etDateOfBirth.getText().toString().trim());
+        patient.setPhone(binding.etPhone.getText().toString().trim());
+        patient.setAddress(binding.etAddress.getText().toString().trim());
+        patient.setJob(binding.etJob.getText().toString().trim());
+        patient.setUserRole(Const.patientRole);
+        registerViewModel.registerPatient(patient);
     }
 
     private boolean checkEmpty() {

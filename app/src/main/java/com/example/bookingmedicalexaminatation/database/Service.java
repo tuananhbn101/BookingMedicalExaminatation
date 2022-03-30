@@ -5,7 +5,9 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.bookingmedicalexaminatation.data.Account;
+import com.example.bookingmedicalexaminatation.data.Doctor;
+import com.example.bookingmedicalexaminatation.data.Patient;
+import com.example.bookingmedicalexaminatation.util.Const;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,11 +27,11 @@ public class Service {
         executorService = Executors.newFixedThreadPool(THREAD_NUMBER);
     }
 
-    public void registerAccount(Account account, RegisterCallBack registerCallBack) {
+    public void registerAccount(Patient patient, RegisterCallBack registerCallBack) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                databaseReference.child("account").push().setValue(account, new DatabaseReference.CompletionListener() {
+                databaseReference.child(Const.patientRole).push().setValue(patient, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                         if (error != null) {
@@ -43,25 +45,54 @@ public class Service {
         });
     }
 
-    public void login(String userName, String password, LoginCallBack loginCallBack) {
+    public void registerAccount(Doctor doctor, RegisterCallBack registerCallBack) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                Query query = databaseReference.child("account").orderByChild("userName").equalTo(userName);
+                databaseReference.child(Const.doctorRole).push().setValue(doctor, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        if (error != null) {
+                            registerCallBack.registerSuccess(false);
+                        } else {
+                            registerCallBack.registerSuccess(true);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
+    public void login(String userName, String password, String userRole, LoginCallBack loginCallBack) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                Query query = databaseReference.child("patient").orderByChild("userName").equalTo(userName);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
-                            Account account = snapshot.getChildren().iterator().next().getValue(Account.class);
-                            if (account != null) {
-                                if (password.equals(account.getPassword())) {
-                                    loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(),account.getUserRole());
-                                } else {
-                                    loginCallBack.loginSuccess("","");
+                            if (userRole.equals(Const.patientRole)) {
+                                Patient patient = snapshot.getChildren().iterator().next().getValue(Patient.class);
+                                if (patient != null) {
+                                    if (password.equals(patient.getPassword())) {
+                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey());
+                                    } else {
+                                        loginCallBack.loginSuccess("");
+                                    }
+                                }
+                            } else {
+                                Doctor doctor = snapshot.getChildren().iterator().next().getValue(Doctor.class);
+                                if (doctor != null) {
+                                    if (password.equals(doctor.getPassWord())) {
+                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey());
+                                    } else {
+                                        loginCallBack.loginSuccess("");
+                                    }
                                 }
                             }
                         } else {
-                            loginCallBack.loginSuccess("","");
+                            loginCallBack.loginSuccess("");
                         }
                     }
 
@@ -78,7 +109,7 @@ public class Service {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-                Query query = databaseReference.child("account").orderByChild("userName").equalTo(username);
+                Query query = databaseReference.child("patient").orderByChild("userName").equalTo(username);
                 query.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -98,8 +129,8 @@ public class Service {
         });
     }
 
-    public void getAccount(String userId,Callback callback) {
-        databaseReference.child("account").child(userId).get().addOnCompleteListener(task -> {
+    public void getAccount(String userId, Callback callback) {
+        databaseReference.child("patient").child(userId).get().addOnCompleteListener(task -> {
             if (!task.isSuccessful()) {
                 Log.e("firebase", "Error getting data", task.getException());
             } else {
@@ -109,7 +140,7 @@ public class Service {
     }
 
     public interface Callback {
-        void requestSuccess(Account account);
+        void requestSuccess(Patient patient);
     }
 
     public interface RegisterCallBack {
@@ -119,6 +150,6 @@ public class Service {
     }
 
     public interface LoginCallBack {
-        void loginSuccess(String accountId,String userRole);
+        void loginSuccess(String accountId);
     }
 }
