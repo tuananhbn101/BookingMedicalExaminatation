@@ -1,4 +1,4 @@
-package com.example.bookingmedicalexaminatation.view;
+package com.example.bookingmedicalexaminatation.view.history;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

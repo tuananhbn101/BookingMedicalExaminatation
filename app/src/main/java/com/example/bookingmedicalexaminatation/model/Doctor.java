@@ -1,6 +1,8 @@
-package com.example.bookingmedicalexaminatation.data;
+package com.example.bookingmedicalexaminatation.model;
 
-public class Doctor {
+import java.io.Serializable;
+
+public class Doctor implements Serializable {
     private String id;
     private String userName;
     private String passWord;
@@ -10,11 +12,12 @@ public class Doctor {
     private String specialist;
     private String phoneNumber;
     private String note;
+    private int rate;
 
     public Doctor() {
     }
 
-    public Doctor(String id, String userName, String passWord, String fullName, String gender, String dateOfBirth, String specialist, String phoneNumber, String note) {
+    public Doctor(String id, String userName, String passWord, String fullName, String gender, String dateOfBirth, String specialist, String phoneNumber, String note, int rate) {
         this.id = id;
         this.userName = userName;
         this.passWord = passWord;
@@ -24,6 +27,7 @@ public class Doctor {
         this.specialist = specialist;
         this.phoneNumber = phoneNumber;
         this.note = note;
+        this.rate = rate;
     }
 
 
@@ -97,5 +101,13 @@ public class Doctor {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public int getRate() {
+        return rate;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
     }
 }

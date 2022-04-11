@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bookingmedicalexaminatation.R;
 import com.example.bookingmedicalexaminatation.databinding.ActivityLoginBinding;
-import com.example.bookingmedicalexaminatation.model.LoginViewModel;
+import com.example.bookingmedicalexaminatation.viewmodel.LoginViewModel;
 import com.example.bookingmedicalexaminatation.util.Const;
 import com.example.bookingmedicalexaminatation.view.MainActivity;
 
@@ -42,13 +42,17 @@ public class LoginActivity extends AppCompatActivity {
     private void action() {
         binding.btnLogin.setOnClickListener(view -> {
             if (checkEmpty()) {
-                String userRole = "";
-                if (binding.checkRole.isChecked()) {
-                    userRole = Const.doctorRole;
-                } else {
-                    userRole = Const.patientRole;
+                if(binding.etUserName.getText().toString().trim().equals("admin")){
+                    loginViewModel.login(binding.etUserName.getText().toString(), binding.etPassword.getText().toString(), Const.ADMIN_ROLE);
+                }else {
+                    String userRole = "";
+                    if (binding.checkRole.isChecked()) {
+                        userRole = Const.DOCTOR_ROLE;
+                    } else {
+                        userRole = Const.PATIENT_ROLE;
+                    }
+                    loginViewModel.login(binding.etUserName.getText().toString(), binding.etPassword.getText().toString(), userRole);
                 }
-                loginViewModel.login(binding.etUserName.getText().toString(), binding.etPassword.getText().toString(), userRole);
             }
         });
         binding.btnRegister.setOnClickListener(view -> {

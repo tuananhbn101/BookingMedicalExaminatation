@@ -12,19 +12,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingMedicalExaminatation">
         <activity
-            android:name=".view.profile.PatientActivity"
+            android:name=".view.workschedule.WorkScheduleRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".view.profile.DoctorActivity"
+            android:name=".view.workschedule.WorkScheduleActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.bookappointment.choosedoctor.ChooseDoctorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.appointment.AppointmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.patient.PatientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.profile.doctor.DoctorActivity"
             android:exported="false" />
         <activity
             android:name=".view.login_register.DoctorRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".view.profile.PatientProfileActivity"
+            android:name=".view.profile.patient.PatientProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".view.profile.DoctorProfileActivity"
+            android:name=".view.profile.doctor.DoctorProfileActivity"
             android:exported="false" />
         <activity
             android:name=".view.bookappointment.BookAppointmentActivity"
@@ -33,19 +45,32 @@
             android:name=".view.login_register.PatientRegisterActivity"
             android:exported="true" />
         <activity
+            android:name=".view.more.ContactActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.more.IntroduceActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.more.RegulationUseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.more.SecurityPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.more.ExaminalProcessActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.login_register.LoginActivity"
             android:exported="true">
-
-        </activity>
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".view.MainActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

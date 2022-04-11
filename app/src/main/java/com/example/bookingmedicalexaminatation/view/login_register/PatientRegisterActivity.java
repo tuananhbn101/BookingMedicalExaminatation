@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.bookingmedicalexaminatation.data.Patient;
+import com.example.bookingmedicalexaminatation.model.Patient;
 import com.example.bookingmedicalexaminatation.databinding.ActivityRegisterBinding;
-import com.example.bookingmedicalexaminatation.model.RegisterViewModel;
-import com.example.bookingmedicalexaminatation.util.AccountUtil;
+import com.example.bookingmedicalexaminatation.viewmodel.RegisterViewModel;
+import com.example.bookingmedicalexaminatation.util.ModelUtil;
 import com.example.bookingmedicalexaminatation.util.Const;
 
 public class PatientRegisterActivity extends AppCompatActivity {
@@ -60,7 +60,7 @@ public class PatientRegisterActivity extends AppCompatActivity {
     private void action() {
         binding.btnControl.setOnClickListener(v -> {
             if (checkEmpty()) {
-                registerViewModel.checkUserNameExisted(binding.etUserName.getText().toString().trim(),Const.patientRole);
+                registerViewModel.checkUserNameExisted(binding.etUserName.getText().toString().trim(),Const.PATIENT_ROLE);
             }
         });
         binding.title.back.setOnClickListener(v -> finish());
@@ -68,17 +68,16 @@ public class PatientRegisterActivity extends AppCompatActivity {
 
     private void register() {
         Patient patient = new Patient();
-        patient.setUserId(AccountUtil.createPatientId());
+        patient.setId(ModelUtil.createPatientId());
         patient.setUserName(binding.etUserName.getText().toString().trim());
         patient.setPassword(binding.etPassword.getText().toString().trim());
         patient.setEmail(binding.etEmail.getText().toString().trim());
         patient.setFullName(binding.etFullName.getText().toString().trim());
         patient.setGender(binding.etGender.getText().toString().trim());
-        patient.setBirthOfDate(binding.etDateOfBirth.getText().toString().trim());
+        patient.setDateOfBirth(binding.etDateOfBirth.getText().toString().trim());
         patient.setPhone(binding.etPhone.getText().toString().trim());
         patient.setAddress(binding.etAddress.getText().toString().trim());
         patient.setJob(binding.etJob.getText().toString().trim());
-        patient.setUserRole(Const.patientRole);
         registerViewModel.registerPatient(patient);
     }
 

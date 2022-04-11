@@ -1,7 +1,7 @@
-package com.example.bookingmedicalexaminatation.data;
+package com.example.bookingmedicalexaminatation.model;
 
 public class Appointment {
-    private int id;
+    private String id;
     private String doctorUserName;
     private String patientUserName;
     private String date;
@@ -9,7 +9,7 @@ public class Appointment {
     private String place;
     private String status;
 
-    public Appointment(int id, String doctorUserName, String patientUserName, String date, String doctorSpecialist, String place, String status) {
+    public Appointment(String id, String doctorUserName, String patientUserName, String date, String doctorSpecialist, String place, String status) {
         this.id = id;
         this.doctorUserName = doctorUserName;
         this.patientUserName = patientUserName;
@@ -19,7 +19,7 @@ public class Appointment {
         this.status = status;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
@@ -47,7 +47,7 @@ public class Appointment {
         return status;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

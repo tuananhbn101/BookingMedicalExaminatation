@@ -1,4 +1,4 @@
-package com.example.bookingmedicalexaminatation.model;
+package com.example.bookingmedicalexaminatation.viewmodel;
 
 import android.app.Application;
 
@@ -6,8 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.bookingmedicalexaminatation.data.Doctor;
-import com.example.bookingmedicalexaminatation.data.Patient;
+import com.example.bookingmedicalexaminatation.model.Doctor;
+import com.example.bookingmedicalexaminatation.model.Patient;
 import com.example.bookingmedicalexaminatation.database.Service;
 import com.example.bookingmedicalexaminatation.repository.Repository;
 
@@ -50,7 +50,7 @@ public class RegisterViewModel extends AndroidViewModel implements Service.Regis
         repository.registerAccount(doctor, this);
     }
 
-    public void checkUserNameExisted(String userName, String role) {
-        repository.checkUserNameExisted(userName, this);
+    public void checkUserNameExisted(String userName, String useRole) {
+        repository.checkUserNameExisted(userName, useRole,this);
     }
 }

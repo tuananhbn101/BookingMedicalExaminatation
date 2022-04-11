@@ -40,6 +40,7 @@
 
     <string name="patient">Bệnh nhân</string>
     <string name="doctor">Bác sỹ</string>
+    <string name="register_work">Đ.ký lịch làm</string>
 
     <string name="specialist">Chuyên khoa</string>
     <string name="note">Ghi chú</string>

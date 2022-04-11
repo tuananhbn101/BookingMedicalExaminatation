@@ -46,4 +46,7 @@ dependencies {
     /* FireBase */
     implementation platform('com.google.firebase:firebase-bom:29.2.0')
     implementation 'com.google.firebase:firebase-database'
+
+    /* Calendar */
+    implementation 'org.naishadhparmar.zcustomcalendar:zcustomcalendar:1.0.1'
 }

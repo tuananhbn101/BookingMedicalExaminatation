@@ -2,13 +2,13 @@ package com.example.bookingmedicalexaminatation.view;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bookingmedicalexaminatation.R;
 import com.example.bookingmedicalexaminatation.databinding.ActivityMainBinding;
+import com.example.bookingmedicalexaminatation.view.history.HistoryFragment;
 import com.example.bookingmedicalexaminatation.view.home.HomeFragment;
 import com.example.bookingmedicalexaminatation.view.more.MoreFragment;
 import com.google.android.material.navigation.NavigationBarView;
@@ -42,7 +42,5 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 }

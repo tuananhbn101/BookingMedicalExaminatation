@@ -1,8 +1,10 @@
-package com.example.bookingmedicalexaminatation.data;
+package com.example.bookingmedicalexaminatation.model;
 
-public class Patient {
-    private String userId;
-    public String userName;
+import java.io.Serializable;
+
+public class Patient implements Serializable {
+    private String id;
+    private String userName;
     private String password;
     private String email;
     private String fullName;
@@ -11,13 +13,12 @@ public class Patient {
     private String phone;
     private String address;
     private String job;
-    private String userRole;
 
     public Patient() {
     }
 
-    public Patient(String userId, String username, String password, String email, String fullName, String gender, String birthOfDate, String phone, String address, String job, String userRole) {
-        this.userId = userId;
+    public Patient(String id, String username, String password, String email, String fullName, String gender, String birthOfDate, String phone, String address, String job) {
+        this.id = id;
         this.userName = username;
         this.email = email;
         this.password = password;
@@ -27,15 +28,14 @@ public class Patient {
         this.phone = phone;
         this.address = address;
         this.job = job;
-        this.userRole = userRole;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getId() {
+        return id;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserName() {
@@ -78,11 +78,11 @@ public class Patient {
         this.gender = gender;
     }
 
-    public String getBirthOfDate() {
+    public String getDateOfBirth() {
         return birthOfDate;
     }
 
-    public void setBirthOfDate(String birthOfDate) {
+    public void setDateOfBirth(String birthOfDate) {
         this.birthOfDate = birthOfDate;
     }
 
@@ -109,13 +109,4 @@ public class Patient {
     public void setJob(String job) {
         this.job = job;
     }
-
-    public String getUserRole() {
-        return userRole;
-    }
-
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
-    }
-
 }

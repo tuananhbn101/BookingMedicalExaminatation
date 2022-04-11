@@ -3,24 +3,40 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/background_doctor_item.xml" value="0.1554054054054054" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/background_edittext_login.xml" value="0.25025641025641027" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/background_square_boder.xml" value="0.1554054054054054" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/ic_arrow_right.xml" value="0.1554054054054054" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/ic_back.xml" value="0.25025641025641027" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/ic_line.xml" value="0.1554054054054054" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/drawable/ic_user.xml" value="0.21125541125541125" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_appointment.xml" value="0.14144144144144144" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_book_appoiment.xml" value="0.22" />
-        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_doctor.xml" value="0.1292792792792793" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_choose_date.xml" value="0.14888572783309625" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_contact.xml" value="0.1600771456123433" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_doctor.xml" value="0.16666666666666666" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_doctor_profile.xml" value="0.22" />
-        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_doctor_register.xml" value="0.1292792792792793" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_doctor_register.xml" value="0.3333333333333333" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_login.xml" value="0.264" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_main.xml" value="0.2033514492753623" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_patient.xml" value="0.1292792792792793" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_patient_pofile.xml" value="0.1292792792792793" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_patient_profile.xml" value="0.1" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_register.xml" value="0.22" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_regulation_use.xml" value="0.14144144144144144" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_service_term.xml" value="0.14144144144144144" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_work_schedule.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_work_schedule_item.xml" value="0.22" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/activity_work_schedule_register.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/dialog_change_password.xml" value="0.22" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/fragment_doctor_item.xml" value="0.22" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/fragment_examination.xml" value="0.14144144144144144" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/fragment_home.xml" value="0.16666666666666666" />
-        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/fragment_more.xml" value="0.14144144144144144" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/fragment_more.xml" value="0.22" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/fragment_patient_item.xml" value="0.22" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/include_title.xml" value="0.14144144144144144" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/include_user_list.xml" value="0.16666666666666666" />
+        <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/layout_base.xml" value="0.16666666666666666" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/template.xml" value="0.13771929824561405" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/layout/title_layout.xml" value="0.18704710144927536" />
         <entry key="..\:/Android/BookingMedicalExaminatation/app/src/main/res/menu/menu.xml" value="0.20043859649122808" />

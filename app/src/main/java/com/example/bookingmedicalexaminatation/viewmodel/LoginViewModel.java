@@ -1,4 +1,4 @@
-package com.example.bookingmedicalexaminatation.model;
+package com.example.bookingmedicalexaminatation.viewmodel;
 
 import android.app.Application;
 
@@ -24,11 +24,12 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     public void login(String userName, String passWord, String userRole) {
-        repository.login(userName, passWord, userRole, accountId -> {
+        repository.login(userName, passWord, userRole, (accountId, userRole1) -> {
             if (accountId.isEmpty()) {
                 loginSuccess.postValue(false);
             } else {
                 storage.putAccountId(accountId);
+                storage.putString(Const.Account.USER_ROLE, userRole1);
                 storage.putString(Const.Account.USER_NAME, userName);
                 loginSuccess.postValue(true);
             }

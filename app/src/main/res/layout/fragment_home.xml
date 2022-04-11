@@ -83,6 +83,7 @@
             app:layout_constraintTop_toBottomOf="@+id/book">
 
             <LinearLayout
+                android:id="@+id/contact"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:gravity="center"
@@ -137,12 +138,11 @@
             android:id="@+id/patient_profile"
             android:layout_width="0dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             app:cardCornerRadius="5dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="@id/examination"
-            app:layout_constraintTop_toBottomOf="@+id/examination">
+            app:layout_constraintLeft_toLeftOf="@id/introduce"
+            app:layout_constraintRight_toRightOf="@id/introduce"
+            app:layout_constraintTop_toBottomOf="@+id/introduce">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -192,6 +192,36 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:text="@string/doctor"
+                    android:textColor="@color/color_primary_key" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+            android:id="@+id/register_work_schedule"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            app:cardCornerRadius="5dp"
+            app:layout_constraintLeft_toLeftOf="@id/examination"
+            app:layout_constraintRight_toRightOf="@id/examination"
+            app:layout_constraintTop_toBottomOf="@+id/examination">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="@color/color_primary_key" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/register_work"
                     android:textColor="@color/color_primary_key" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
