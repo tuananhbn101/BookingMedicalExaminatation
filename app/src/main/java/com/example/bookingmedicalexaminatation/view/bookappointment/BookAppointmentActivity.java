@@ -12,10 +12,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bookingmedicalexaminatation.databinding.ActivityBookAppoimentBinding;
+import com.example.bookingmedicalexaminatation.model.Appointment;
 import com.example.bookingmedicalexaminatation.model.Doctor;
 import com.example.bookingmedicalexaminatation.model.Patient;
+import com.example.bookingmedicalexaminatation.model.WorkSchedule;
 import com.example.bookingmedicalexaminatation.util.Const;
+import com.example.bookingmedicalexaminatation.util.ModelUtil;
 import com.example.bookingmedicalexaminatation.view.appointment.AppointmentActivity;
+import com.example.bookingmedicalexaminatation.view.bookappointment.choosedate.ChooseDateActivity;
 import com.example.bookingmedicalexaminatation.view.bookappointment.choosedoctor.ChooseDoctorActivity;
 import com.example.bookingmedicalexaminatation.viewmodel.BookAppointmentViewModel;
 
@@ -25,6 +29,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
     private Patient patient;
     private static int REQUEST_CODE = 1;
     private Doctor doctor;
+    private WorkSchedule workSchedule;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,11 @@ public class BookAppointmentActivity extends AppCompatActivity {
                 if (data != null && data.getSerializableExtra(Const.Configure.DOCTOR_RESULT) != null) {
                     doctor = (Doctor) data.getSerializableExtra(Const.Configure.DOCTOR_RESULT);
                     binding.doctorName.setText(doctor.getFullName());
+                } else if (data != null && data.getSerializableExtra(Const.Configure.DATE_RESULT) != null) {
+                    workSchedule = (WorkSchedule) data.getSerializableExtra(Const.Configure.DATE_RESULT);
+                    binding.date.setText(workSchedule.getDate());
+                    binding.room.setText(workSchedule.getPlace());
+                    binding.time.setText(workSchedule.getFrom() + " - " + workSchedule.getTo());
                 }
             }
         }
@@ -55,6 +65,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
             public void onChanged(Boolean createAppointmentSuccess) {
                 if (createAppointmentSuccess) {
                     startActivity(new Intent(getApplicationContext(), AppointmentActivity.class));
+                    finish();
                 } else {
                     Toast.makeText(getApplicationContext(), "Đặt lịch khám không thành công. Xin thử lại", Toast.LENGTH_SHORT).show();
                 }
@@ -77,7 +88,35 @@ public class BookAppointmentActivity extends AppCompatActivity {
                 startActivityForResult(new Intent(getApplicationContext(), ChooseDoctorActivity.class), REQUEST_CODE);
             }
         });
-    }
 
+        binding.date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChooseDateActivity.class);
+                intent.putExtra(Const.Account.USER_NAME, doctor.getUserName());
+                startActivityForResult(intent, REQUEST_CODE);
+            }
+        });
+
+        binding.book.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Appointment appointment = new Appointment();
+                appointment.setId(ModelUtil.createAppointmentId());
+                appointment.setDoctorUserName(doctor.getUserName());
+                appointment.setDoctorSpecialist(doctor.getSpecialist());
+                appointment.setDate(workSchedule.getDate());
+                appointment.setPlace(workSchedule.getPlace());
+                appointment.setStatus(Const.Configure.WAIT_CONFIRM);
+                appointment.setPatientUserName(patient.getUserName());
+                if (binding.has.isChecked()) {
+                    appointment.setHasInsurance(true);
+                } else {
+                    appointment.setHasInsurance(false);
+                }
+                bookAppointmentViewModel.createAppointment(appointment);
+            }
+        });
+    }
 
 }

@@ -256,6 +256,50 @@ public class Service {
         });
     }
 
+    public void getAppointments(String userName, String userRole, AppointmentCallBack callBack) {
+        executorService.execute(new Runnable() {
+            List<Appointment> appointments = new ArrayList<>();
+
+            @Override
+            public void run() {
+                Query query;
+                if (userRole.equals(Const.PATIENT_ROLE)) {
+                    query = databaseReference.child(Const.APPOINTMENT).orderByChild("patientUserName").equalTo(userName);
+                } else {
+                    query = databaseReference.child(Const.APPOINTMENT).orderByChild("doctorUserName").equalTo(userName);
+                }
+                query.addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        Appointment appointment = snapshot.getValue(Appointment.class);
+                        appointments.add(appointment);
+                        callBack.getAppointmentsSuccess(appointments);
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+    }
+
     public void registerWorkSchedule(WorkSchedule workSchedule, WorkCallBack callBack) {
         executorService.execute(new Runnable() {
             @Override
@@ -338,5 +382,7 @@ public class Service {
 
     public interface AppointmentCallBack {
         void createSuccess(Boolean isSuccess);
+
+        void getAppointmentsSuccess(List<Appointment> appointments);
     }
 }

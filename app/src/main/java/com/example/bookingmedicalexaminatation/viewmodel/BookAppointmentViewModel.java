@@ -11,6 +11,8 @@ import com.example.bookingmedicalexaminatation.model.Appointment;
 import com.example.bookingmedicalexaminatation.model.Patient;
 import com.example.bookingmedicalexaminatation.util.Const;
 
+import java.util.List;
+
 public class BookAppointmentViewModel extends UserViewModel implements Service.AppointmentCallBack {
     private MutableLiveData<Boolean> bookAppointmentSuccess;
     private MutableLiveData<Patient> patient;
@@ -32,6 +34,11 @@ public class BookAppointmentViewModel extends UserViewModel implements Service.A
     @Override
     public void createSuccess(Boolean isSuccess) {
         bookAppointmentSuccess.postValue(isSuccess);
+    }
+
+    @Override
+    public void getAppointmentsSuccess(List<Appointment> appointments) {
+
     }
 
     public MutableLiveData<Boolean> getBookAppointmentSuccess() {

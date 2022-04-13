@@ -1,4 +1,4 @@
-package com.example.bookingmedicalexaminatation.view.more;
+package com.example.bookingmedicalexaminatation.view.more.view;
 
 import android.os.Bundle;
 import android.widget.Toast;

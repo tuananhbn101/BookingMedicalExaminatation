@@ -45,19 +45,22 @@
             android:name=".view.login_register.PatientRegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".view.more.ContactActivity"
+            android:name=".view.more.view.ContactActivity"
             android:exported="false" />
         <activity
-            android:name=".view.more.IntroduceActivity"
+            android:name=".view.more.view.IntroduceActivity"
             android:exported="false" />
         <activity
-            android:name=".view.more.RegulationUseActivity"
+            android:name=".view.more.view.RegulationUseActivity"
             android:exported="false" />
         <activity
-            android:name=".view.more.SecurityPolicyActivity"
+            android:name=".view.bookappointment.choosedate.ChooseDateActivity"
             android:exported="false" />
         <activity
-            android:name=".view.more.ExaminalProcessActivity"
+            android:name=".view.more.view.SecurityPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.more.view.ExaminalProcessActivity"
             android:exported="false" />
         <activity
             android:name=".view.login_register.LoginActivity"

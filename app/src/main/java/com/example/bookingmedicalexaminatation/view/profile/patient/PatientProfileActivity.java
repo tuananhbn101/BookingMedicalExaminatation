@@ -37,13 +37,14 @@ public class PatientProfileActivity extends AppCompatActivity {
 
     private void init() {
         patient = new Patient();
+        patientViewModel = ViewModelProviders.of(this).get(PatientViewModel.class);
+        
         Intent intent = getIntent();
         if (intent != null) {
             if (intent.getSerializableExtra(Const.PATIENT_ROLE) != null) {
                 patient = (Patient) intent.getSerializableExtra(Const.PATIENT_ROLE);
                 updateUI(patient);
             } else {
-                patientViewModel = ViewModelProviders.of(this).get(PatientViewModel.class);
                 patientViewModel.getPatient().observe(this, new Observer<Patient>() {
                     @Override
                     public void onChanged(Patient patientResponse) {

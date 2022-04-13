@@ -38,7 +38,6 @@ public class WorkScheduleViewModel extends BaseViewModel implements Service.Work
     }
 
 
-
     public void registerWorkSchedule(WorkSchedule workSchedule) {
         workSchedule.setUserName(storage.getUserName());
         repository.registerWorkSchedule(workSchedule, this);
@@ -50,5 +49,9 @@ public class WorkScheduleViewModel extends BaseViewModel implements Service.Work
 
     public void getWorkScheduleList() {
         repository.getWorkSchedules(storage.getUserName(), this);
+    }
+
+    public void getWorkScheduleList(String userName) {
+        repository.getWorkSchedules(userName, this);
     }
 }

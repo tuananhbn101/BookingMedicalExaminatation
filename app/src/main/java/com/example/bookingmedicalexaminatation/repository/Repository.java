@@ -56,5 +56,9 @@ public class Repository {
     public void getWorkSchedules(String userName, Service.WorkCallBack callBack) {
         service.getWorkSchedules(userName, callBack);
     }
+
+    public void getAppointmentList(String userName,String userRole, Service.AppointmentCallBack callBack){
+        service.getAppointments(userName,userRole,callBack);
+    }
 }
 

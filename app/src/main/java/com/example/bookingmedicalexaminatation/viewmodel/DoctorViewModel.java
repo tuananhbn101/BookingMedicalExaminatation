@@ -12,14 +12,10 @@ import java.util.List;
 
 public class DoctorViewModel extends UserViewModel {
     private MutableLiveData<List<Doctor>> doctors;
-    private MutableLiveData<Doctor> doctor;
-    private MutableLiveData<Boolean> updateSuccess;
 
     public DoctorViewModel(@NonNull Application application) {
         super(application);
-        doctor = new MutableLiveData<>();
         doctors = new MutableLiveData<>();
-        updateSuccess = new MutableLiveData<>();
     }
 
     @Override
@@ -40,16 +36,8 @@ public class DoctorViewModel extends UserViewModel {
         updateSuccess.postValue(isSuccess);
     }
 
-    public MutableLiveData<Doctor> getDoctor() {
-        return doctor;
-    }
-
     public MutableLiveData<List<Doctor>> getDoctors() {
         return doctors;
-    }
-
-    public MutableLiveData<Boolean> getUpdateSuccess() {
-        return updateSuccess;
     }
 
     public void getDoctorInfo() {

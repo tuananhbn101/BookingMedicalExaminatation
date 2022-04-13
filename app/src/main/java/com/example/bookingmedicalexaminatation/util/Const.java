@@ -18,6 +18,8 @@ public interface Const {
         String CONTROL = "control";
         String DOCTOR_RESULT = "doctor_result";
         String DATE_RESULT = "date_result";
+        String WAIT_CONFIRM = "wait_confirm";
+        String CONFIRM = "confirm";
     }
 }
 

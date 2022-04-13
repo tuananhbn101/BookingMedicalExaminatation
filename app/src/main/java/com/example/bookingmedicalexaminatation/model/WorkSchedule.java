@@ -1,6 +1,8 @@
 package com.example.bookingmedicalexaminatation.model;
 
-public class WorkSchedule {
+import java.io.Serializable;
+
+public class WorkSchedule implements Serializable {
     private String id;
     private String userName;
     private String date;

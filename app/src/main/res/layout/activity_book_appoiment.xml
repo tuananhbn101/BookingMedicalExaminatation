@@ -101,9 +101,29 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/background_edittext_login"
-                    android:drawableRight="@drawable/ic_arrow_right"
                     android:padding="10dp"
                     android:text="Chọn phòng khám" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thời gian khám" />
+
+                <TextView
+                    android:id="@+id/time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/background_edittext_login"
+                    android:padding="10dp"
+                    android:text="Thời gian tiếp nhận bệnh nhân" />
             </LinearLayout>
 
             <LinearLayout
@@ -125,6 +145,7 @@
                     android:orientation="horizontal">
 
                     <RadioButton
+                        android:id="@+id/has"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

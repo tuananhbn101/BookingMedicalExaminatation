@@ -12,17 +12,13 @@ import com.example.bookingmedicalexaminatation.util.Const;
 import java.util.List;
 
 public class PatientViewModel extends UserViewModel {
-    private MutableLiveData<Patient> patient;
     private MutableLiveData<List<Patient>> patients;
-    private MutableLiveData<Boolean> updateSuccess;
     private Repository repository;
 
     public PatientViewModel(@NonNull Application application) {
         super(application);
-        patient = new MutableLiveData<>();
         patients = new MutableLiveData<>();
         repository = new Repository();
-        updateSuccess = new MutableLiveData<>();
     }
 
     @Override
@@ -43,16 +39,8 @@ public class PatientViewModel extends UserViewModel {
         updateSuccess.postValue(isSuccess);
     }
 
-    public MutableLiveData<Patient> getPatient() {
-        return patient;
-    }
-
     public MutableLiveData<List<Patient>> getPatients() {
         return patients;
-    }
-
-    public MutableLiveData<Boolean> getUpdateSuccess() {
-        return updateSuccess;
     }
 
     public void getPatientInfo() {

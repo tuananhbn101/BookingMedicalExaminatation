@@ -10,13 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.bookingmedicalexaminatation.R;
 import com.example.bookingmedicalexaminatation.databinding.ActivityChooseDateBinding;
 import com.example.bookingmedicalexaminatation.model.WorkSchedule;
 import com.example.bookingmedicalexaminatation.util.Const;
 import com.example.bookingmedicalexaminatation.viewmodel.WorkScheduleViewModel;
-import com.hospitalappointyapp.R;
-import com.hospitalappointyapp.data.request.AppointmentRequest;
-import com.hospitalappointyapp.utils.Tags;
 
 import org.naishadhparmar.zcustomcalendar.CustomCalendar;
 import org.naishadhparmar.zcustomcalendar.OnDateSelectedListener;
@@ -63,7 +61,7 @@ public class ChooseDateActivity extends AppCompatActivity {
                     setResult(Activity.RESULT_OK, returnIntent);
                     finish();
                 } else
-                    binding.customCalendar.setDate(calendar, setDatePaint(calendar, setDateCalendar(appointmentRequests, calendar.get(Calendar.MONTH)), calendar.get(Calendar.MONTH)));
+                    binding.customCalendar.setDate(calendar, setDatePaint(calendar, setDateCalendar(workSchedules, calendar.get(Calendar.MONTH)), calendar.get(Calendar.MONTH)));
             }
         });
     }
@@ -79,7 +77,7 @@ public class ChooseDateActivity extends AppCompatActivity {
         List<Integer> dates = new ArrayList<>();
         for (WorkSchedule workSchedule : workSchedules) {
             try {
-                Date date = new SimpleDateFormat("yyyy-MM-dd", Locale.US).parse(workSchedule.getDate());
+                Date date = new SimpleDateFormat("dd-MM-yyyy", Locale.US).parse(workSchedule.getDate());
                 if (month == date.getMonth()) {
                     int count = 0;
                     for (Integer date1 : dates) {
@@ -127,26 +125,31 @@ public class ChooseDateActivity extends AppCompatActivity {
     private void initAction() {
         Intent intent = getIntent();
         if (intent != null) {
-            chooseDateViewModel.requestDoctorAppointment(intent.getStringExtra(Tags.DOCTOR_USER_NAME));
+            workScheduleViewModel.getWorkScheduleList(intent.getStringExtra(Const.Account.USER_NAME));
         }
         binding.customCalendar.setOnDateSelectedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(View view, Calendar selectedDate, Object desc) {
                 int hasDate = 0;
                 Date date = selectedDate.getTime();
-                String dateChoose = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(date);
-                for (AppointmentRequest appointmentRequest : appointmentRequestList) {
-                    if (appointmentRequest.bookingDate.contains(dateChoose)) {
+                String dateChoose = new SimpleDateFormat("dd-MM-yyyy", Locale.US).format(date);
+                for (WorkSchedule workSchedule : workSchedules) {
+                    if (workSchedule.getDate().contains(dateChoose)) {
                         hasDate++;
                     }
                 }
                 if (hasDate != 0) {
-                    Intent returnIntent = new Intent();
-                    returnIntent.putExtra("dateResult", dateChoose);
-                    setResult(Activity.RESULT_OK, returnIntent);
-                    finish();
+                    for (WorkSchedule workSchedule: workSchedules
+                         ) {
+                        if(workSchedule.getDate().equals(dateChoose)){
+                            Intent returnIntent = new Intent();
+                            returnIntent.putExtra(Const.Configure.DATE_RESULT, workSchedule);
+                            setResult(Activity.RESULT_OK, returnIntent);
+                            finish();
+                        }
+                    }
                 } else {
-                    Toast.makeText(getApplicationContext(), getString(R.string.need_to_choose_date_has_appoiment), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Bạn cần chọn ngày có lịch làm", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -154,8 +157,8 @@ public class ChooseDateActivity extends AppCompatActivity {
             @Override
             public Map<Integer, Object>[] onNavigationButtonClicked(int whichButton, Calendar newMonth) {
                 Map<Integer, Object> date[] = new Map[2];
-                date[0] = setDatePaint(newMonth, setDateCalendar(appointmentRequestList, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
-                date[1] = setDatePaint(newMonth, setDateCalendar(appointmentRequestList, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
+                date[0] = setDatePaint(newMonth, setDateCalendar(workSchedules, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
+                date[1] = setDatePaint(newMonth, setDateCalendar(workSchedules, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
                 return date;
             }
         });
@@ -163,12 +166,12 @@ public class ChooseDateActivity extends AppCompatActivity {
             @Override
             public Map<Integer, Object>[] onNavigationButtonClicked(int whichButton, Calendar newMonth) {
                 Map<Integer, Object> date[] = new Map[2];
-                date[0] = setDatePaint(newMonth, setDateCalendar(appointmentRequestList, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
-                date[1] = setDatePaint(newMonth, setDateCalendar(appointmentRequestList, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
+                date[0] = setDatePaint(newMonth, setDateCalendar(workSchedules, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
+                date[1] = setDatePaint(newMonth, setDateCalendar(workSchedules, newMonth.get(Calendar.MONTH)), newMonth.get(Calendar.MONTH));
                 return date;
             }
         });
-        binding.title.leftIcon.setOnClickListener(new View.OnClickListener() {
+        binding.title.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();

@@ -7,15 +7,20 @@ public class Appointment {
     private String date;
     private String doctorSpecialist;
     private String place;
+    private boolean hasInsurance;
     private String status;
 
-    public Appointment(String id, String doctorUserName, String patientUserName, String date, String doctorSpecialist, String place, String status) {
+    public Appointment() {
+    }
+
+    public Appointment(String id, String doctorUserName, String patientUserName, String date, String doctorSpecialist, String place, boolean hasInsurance, String status) {
         this.id = id;
         this.doctorUserName = doctorUserName;
         this.patientUserName = patientUserName;
         this.date = date;
         this.doctorSpecialist = doctorSpecialist;
         this.place = place;
+        this.hasInsurance = hasInsurance;
         this.status = status;
     }
 
@@ -73,5 +78,13 @@ public class Appointment {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public boolean isHasInsurance() {
+        return hasInsurance;
+    }
+
+    public void setHasInsurance(boolean hasInsurance) {
+        this.hasInsurance = hasInsurance;
     }
 }

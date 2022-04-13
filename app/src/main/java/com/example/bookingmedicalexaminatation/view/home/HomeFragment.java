@@ -15,9 +15,10 @@ import com.example.bookingmedicalexaminatation.R;
 import com.example.bookingmedicalexaminatation.database.Storage;
 import com.example.bookingmedicalexaminatation.databinding.FragmentHomeBinding;
 import com.example.bookingmedicalexaminatation.util.Const;
+import com.example.bookingmedicalexaminatation.view.appointment.AppointmentActivity;
 import com.example.bookingmedicalexaminatation.view.bookappointment.BookAppointmentActivity;
-import com.example.bookingmedicalexaminatation.view.more.ContactActivity;
-import com.example.bookingmedicalexaminatation.view.more.IntroduceActivity;
+import com.example.bookingmedicalexaminatation.view.more.view.ContactActivity;
+import com.example.bookingmedicalexaminatation.view.more.view.IntroduceActivity;
 import com.example.bookingmedicalexaminatation.view.profile.doctor.DoctorActivity;
 import com.example.bookingmedicalexaminatation.view.profile.patient.PatientActivity;
 import com.example.bookingmedicalexaminatation.view.workschedule.WorkScheduleActivity;
@@ -74,6 +75,10 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 startActivity(new Intent(getContext(), BookAppointmentActivity.class));
             }
+        });
+
+        binding.examination.setOnClickListener(view -> {
+            startActivity(new Intent(getContext(), AppointmentActivity.class));
         });
 
         binding.patientProfile.setOnClickListener(view -> startActivity(new Intent(getContext(), PatientActivity.class)));
