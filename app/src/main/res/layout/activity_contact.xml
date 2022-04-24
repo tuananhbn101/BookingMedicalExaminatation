@@ -22,56 +22,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
-                android:text="Họ và tên"
+                android:text="Vấn đề liên hệ :"
                 android:textSize="18dp" />
 
             <EditText
+                android:id="@+id/reason"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Họ và tên" />
+                android:layout_height="wrap_content" />
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:text="@string/email"
-                android:textSize="18dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="5dp"
-                android:text="@string/phone"
-                android:textSize="18dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/phone" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="350dp"
             android:layout_margin="8dp"
             android:orientation="vertical">
 
@@ -83,9 +46,13 @@
                 android:textSize="18dp" />
 
             <EditText
+                android:padding="5dp"
+                android:background="@drawable/background_edittext_login"
+                android:id="@+id/content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/contact_content" />
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:inputType="textMultiLine" />
         </LinearLayout>
 
         <Button

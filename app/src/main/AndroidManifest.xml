@@ -45,7 +45,7 @@
             android:name=".view.login_register.PatientRegisterActivity"
             android:exported="true" />
         <activity
-            android:name=".view.more.view.ContactActivity"
+            android:name=".view.contact.ContactActivity"
             android:exported="false" />
         <activity
             android:name=".view.more.view.IntroduceActivity"

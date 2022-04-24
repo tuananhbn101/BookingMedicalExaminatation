@@ -17,7 +17,7 @@ import com.example.bookingmedicalexaminatation.databinding.FragmentHomeBinding;
 import com.example.bookingmedicalexaminatation.util.Const;
 import com.example.bookingmedicalexaminatation.view.appointment.AppointmentActivity;
 import com.example.bookingmedicalexaminatation.view.bookappointment.BookAppointmentActivity;
-import com.example.bookingmedicalexaminatation.view.more.view.ContactActivity;
+import com.example.bookingmedicalexaminatation.view.contact.ContactActivity;
 import com.example.bookingmedicalexaminatation.view.more.view.IntroduceActivity;
 import com.example.bookingmedicalexaminatation.view.profile.doctor.DoctorActivity;
 import com.example.bookingmedicalexaminatation.view.profile.patient.PatientActivity;

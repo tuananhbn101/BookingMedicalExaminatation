@@ -1,6 +1,5 @@
 package com.example.bookingmedicalexaminatation.view.login_register;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -8,12 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.bookingmedicalexaminatation.model.Doctor;
 import com.example.bookingmedicalexaminatation.databinding.ActivityDoctorRegisterBinding;
+import com.example.bookingmedicalexaminatation.model.Doctor;
 import com.example.bookingmedicalexaminatation.util.Const;
-import com.example.bookingmedicalexaminatation.viewmodel.RegisterViewModel;
 import com.example.bookingmedicalexaminatation.util.ModelUtil;
-import com.example.bookingmedicalexaminatation.view.profile.doctor.DoctorActivity;
+import com.example.bookingmedicalexaminatation.util.TextInputUtil;
+import com.example.bookingmedicalexaminatation.viewmodel.RegisterViewModel;
 
 public class DoctorRegisterActivity extends AppCompatActivity {
     private ActivityDoctorRegisterBinding binding;
@@ -61,6 +60,19 @@ public class DoctorRegisterActivity extends AppCompatActivity {
     }
 
     private void register() {
+        if (!TextInputUtil.checkUserName(binding.etUserName.getText().toString().trim())) {
+            Toast.makeText(getApplicationContext(), "Tên đăng nhập không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!TextInputUtil.checkPassWord(binding.etPassword.getText().toString().trim())) {
+            Toast.makeText(getApplicationContext(), "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!TextInputUtil.dateCheck(binding.etDateOfBirth.getText().toString().trim())) {
+            Toast.makeText(getApplicationContext(), "Ngày sinh không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Doctor doctor = new Doctor();
         doctor.setId(ModelUtil.createDoctorId());
         doctor.setUserName(binding.etUserName.getText().toString().trim());

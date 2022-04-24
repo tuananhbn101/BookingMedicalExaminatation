@@ -57,6 +57,7 @@ public class MoreFragment extends Fragment {
 
         binding.logOut.setOnClickListener(view -> {
             startActivity(new Intent(getContext(), LoginActivity.class));
+            getActivity().finish();
         });
 
         binding.passwordChange.setOnClickListener(new View.OnClickListener() {

@@ -13,4 +13,7 @@ public class ModelUtil {
     public static String createWorkScheduleId() {
         return "workSchedule" + System.currentTimeMillis();
     }
+    public static String createContactId() {
+        return "contact" + System.currentTimeMillis();
+    }
 }

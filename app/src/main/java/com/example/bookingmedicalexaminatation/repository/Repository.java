@@ -2,6 +2,7 @@ package com.example.bookingmedicalexaminatation.repository;
 
 import com.example.bookingmedicalexaminatation.database.Service;
 import com.example.bookingmedicalexaminatation.model.Appointment;
+import com.example.bookingmedicalexaminatation.model.Contact;
 import com.example.bookingmedicalexaminatation.model.Doctor;
 import com.example.bookingmedicalexaminatation.model.Patient;
 import com.example.bookingmedicalexaminatation.model.WorkSchedule;
@@ -59,6 +60,10 @@ public class Repository {
 
     public void getAppointmentList(String userName,String userRole, Service.AppointmentCallBack callBack){
         service.getAppointments(userName,userRole,callBack);
+    }
+
+    public void createContact(Contact contact, Service.ContactCallBack callBack) {
+        service.createContact(contact,callBack);
     }
 }
 

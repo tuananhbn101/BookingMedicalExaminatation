@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.bookingmedicalexaminatation.model.Patient;
 import com.example.bookingmedicalexaminatation.databinding.ActivityRegisterBinding;
+import com.example.bookingmedicalexaminatation.util.TextInputUtil;
 import com.example.bookingmedicalexaminatation.viewmodel.RegisterViewModel;
 import com.example.bookingmedicalexaminatation.util.ModelUtil;
 import com.example.bookingmedicalexaminatation.util.Const;
@@ -67,6 +68,23 @@ public class PatientRegisterActivity extends AppCompatActivity {
     }
 
     private void register() {
+        if(!TextInputUtil.checkUserName(binding.etUserName.getText().toString().trim())){
+            Toast.makeText(getApplicationContext(),"Tên đăng nhập không hợp lệ",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!TextInputUtil.checkPassWord(binding.etPassword.getText().toString().trim()))
+        {
+            Toast.makeText(getApplicationContext(),"Mật khẩu không hợp lệ",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if(!TextInputUtil.checkEmail(binding.etEmail.getText().toString().trim())){
+            Toast.makeText(getApplicationContext(),"Email không hợp lệ",Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!TextInputUtil.dateCheck(binding.etDateOfBirth.getText().toString().trim())){
+            Toast.makeText(getApplicationContext(),"Ngày sinh không hợp lệ",Toast.LENGTH_SHORT).show();
+            return;
+        }
         Patient patient = new Patient();
         patient.setId(ModelUtil.createPatientId());
         patient.setUserName(binding.etUserName.getText().toString().trim());

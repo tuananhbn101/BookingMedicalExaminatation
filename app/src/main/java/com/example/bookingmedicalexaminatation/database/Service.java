@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 
 import com.example.bookingmedicalexaminatation.model.Admin;
 import com.example.bookingmedicalexaminatation.model.Appointment;
+import com.example.bookingmedicalexaminatation.model.Contact;
 import com.example.bookingmedicalexaminatation.model.Doctor;
 import com.example.bookingmedicalexaminatation.model.Patient;
 import com.example.bookingmedicalexaminatation.model.WorkSchedule;
@@ -352,6 +353,24 @@ public class Service {
 
     }
 
+    public void createContact(Contact contact,ContactCallBack callBack) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                databaseReference.child(Const.CONTACT).child(contact.getId()).setValue(contact, new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        if(error!=null){
+                            callBack.createSuccess(false);
+                        }else {
+                            callBack.createSuccess(true);
+                        }
+                    }
+                });
+            }
+        });
+    }
+
     public interface CallBack {
         void requestPatientSuccess(Patient patient);
 
@@ -384,5 +403,9 @@ public class Service {
         void createSuccess(Boolean isSuccess);
 
         void getAppointmentsSuccess(List<Appointment> appointments);
+    }
+
+    public interface ContactCallBack{
+        void createSuccess(Boolean isSuccess);
     }
 }

@@ -5,6 +5,7 @@ public interface Const {
     String DOCTOR_ROLE = "Doctor";
     String ADMIN_ROLE = "Admin";
     String APPOINTMENT = "Appointment";
+    String CONTACT = "Contact";
     String WORK_SCHEDULE = "WorkSchedule";
 
     interface Account {
@@ -20,6 +21,7 @@ public interface Const {
         String DATE_RESULT = "date_result";
         String WAIT_CONFIRM = "wait_confirm";
         String CONFIRM = "confirm";
+        String HISTORY = "history";
     }
 }
 

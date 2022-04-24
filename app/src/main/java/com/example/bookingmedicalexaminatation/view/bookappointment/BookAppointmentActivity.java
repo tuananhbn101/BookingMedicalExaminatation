@@ -104,11 +104,13 @@ public class BookAppointmentActivity extends AppCompatActivity {
                 Appointment appointment = new Appointment();
                 appointment.setId(ModelUtil.createAppointmentId());
                 appointment.setDoctorUserName(doctor.getUserName());
+                appointment.setDoctorFullName(doctor.getFullName());
                 appointment.setDoctorSpecialist(doctor.getSpecialist());
                 appointment.setDate(workSchedule.getDate());
                 appointment.setPlace(workSchedule.getPlace());
                 appointment.setStatus(Const.Configure.WAIT_CONFIRM);
                 appointment.setPatientUserName(patient.getUserName());
+                appointment.setPatientFullName(patient.getFullName());
                 if (binding.has.isChecked()) {
                     appointment.setHasInsurance(true);
                 } else {

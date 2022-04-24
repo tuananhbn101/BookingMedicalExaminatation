@@ -12,26 +12,14 @@ import com.example.bookingmedicalexaminatation.util.Const;
 
 import java.util.List;
 
-public class AppointmentViewModel extends BaseViewModel implements Service.AppointmentCallBack {
+public class HistoryViewModel extends BaseViewModel implements Service.AppointmentCallBack {
     private Repository repository;
     private MutableLiveData<List<Appointment>> appointments;
 
-    public AppointmentViewModel(@NonNull Application application) {
+    public HistoryViewModel(@NonNull Application application) {
         super(application);
         repository = new Repository();
         appointments = new MutableLiveData<>();
-    }
-
-    public MutableLiveData<List<Appointment>> getAppointments() {
-        return appointments;
-    }
-
-    public void getAppointmentList() {
-        repository.getAppointmentList(storage.getUserName(), storage.getRole(Const.Account.USER_ROLE), this);
-    }
-
-    public void updateAppointment(Appointment appointment) {
-        repository.createAppointment(appointment, this);
     }
 
     @Override
@@ -42,10 +30,20 @@ public class AppointmentViewModel extends BaseViewModel implements Service.Appoi
     @Override
     public void getAppointmentsSuccess(List<Appointment> appointmentsResponse) {
         for (int i = 0; i < appointmentsResponse.size(); i++) {
-            if(appointmentsResponse.get(i).getStatus().equals(Const.Configure.HISTORY)){
+            if(!appointmentsResponse.get(i).getStatus().equals(Const.Configure.HISTORY)){
                 appointmentsResponse.remove(i);
             }
         }
         appointments.postValue(appointmentsResponse);
     }
+
+
+    public MutableLiveData<List<Appointment>> getAppointments() {
+        return appointments;
+    }
+
+    public void getAppointmentList() {
+        repository.getAppointmentList(storage.getUserName(), storage.getRole(Const.Account.USER_ROLE), this);
+    }
+
 }

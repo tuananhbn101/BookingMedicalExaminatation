@@ -1,7 +1,6 @@
 package com.example.bookingmedicalexaminatation.view.appointment.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -38,13 +37,12 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         if (appointmentList.get(position).getStatus().equals(Const.Configure.CONFIRM)) {
             holder.binding.confirm.setBackgroundResource(R.color.green_light);
             holder.binding.confirm.setText("Đã tiếp nhận");
-
-        } else {
+            holder.binding.confirm.setOnClickListener(view -> onClickListener.onExaminedClick(position));
+        } else if (appointmentList.get(position).getStatus().equals(Const.Configure.WAIT_CONFIRM)) {
             holder.binding.confirm.setBackgroundResource(R.color.red_light);
             holder.binding.confirm.setText("Chưa tiếp nhận");
             holder.binding.confirm.setOnClickListener(view -> onClickListener.onConfirmClick(position));
         }
-
     }
 
     @Override
@@ -57,8 +55,13 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         notifyDataSetChanged();
     }
 
-    public void updateAppointment(int position) {
+    public void confirmAppointment(int position) {
         appointmentList.get(position).setStatus(Const.Configure.CONFIRM);
+        notifyItemChanged(position);
+    }
+
+    public void examinedAppointment(int position) {
+        appointmentList.get(position).setStatus(Const.Configure.HISTORY);
         notifyItemChanged(position);
     }
 
@@ -81,5 +84,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     public interface OnClickListener {
         void onConfirmClick(int position);
+
+        void onExaminedClick(int position);
     }
 }

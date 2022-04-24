@@ -3,7 +3,9 @@ package com.example.bookingmedicalexaminatation.model;
 public class Appointment {
     private String id;
     private String doctorUserName;
+    private String doctorFullName;
     private String patientUserName;
+    private String patientFullName;
     private String date;
     private String doctorSpecialist;
     private String place;
@@ -13,10 +15,12 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(String id, String doctorUserName, String patientUserName, String date, String doctorSpecialist, String place, boolean hasInsurance, String status) {
+    public Appointment(String id, String doctorUserName, String doctorFullName, String patientUserName, String patientFullName, String date, String doctorSpecialist, String place, boolean hasInsurance, String status) {
         this.id = id;
         this.doctorUserName = doctorUserName;
+        this.doctorFullName = doctorFullName;
         this.patientUserName = patientUserName;
+        this.patientFullName = patientFullName;
         this.date = date;
         this.doctorSpecialist = doctorSpecialist;
         this.place = place;
@@ -30,6 +34,14 @@ public class Appointment {
 
     public String getDoctorUserName() {
         return doctorUserName;
+    }
+
+    public String getDoctorFullName() {
+        return doctorFullName;
+    }
+
+    public String getPatientFullName() {
+        return patientFullName;
     }
 
     public String getPatientUserName() {
@@ -62,6 +74,14 @@ public class Appointment {
 
     public void setPatientUserName(String patientUserName) {
         this.patientUserName = patientUserName;
+    }
+
+    public void setDoctorFullName(String doctorFullName) {
+        this.doctorFullName = doctorFullName;
+    }
+
+    public void setPatientFullName(String patientFullName) {
+        this.patientFullName = patientFullName;
     }
 
     public void setDate(String date) {
