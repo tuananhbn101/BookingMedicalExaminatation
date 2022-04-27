@@ -20,7 +20,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/avatar" />
+                android:src="@drawable/admin" />
         </androidx.cardview.widget.CardView>
 
         <TextView

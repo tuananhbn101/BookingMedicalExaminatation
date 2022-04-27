@@ -73,9 +73,19 @@ public class HistoryFragment extends Fragment {
                 adapter.setAppointmentList(appointments);
                 if (appointments.size() != 0) {
                     binding.noAppointment.setVisibility(View.GONE);
+                    binding.totalMedicalBillLabel.setText(appointments.size() + "");
+                    binding.totalPriceLabel.setText(setTotalPrice(appointments));
                 }
             }
         });
         appointmentViewModel.getAppointmentList();
+    }
+
+    private String setTotalPrice(List<Appointment> appointments) {
+        long price = 0;
+        for (Appointment appointment : appointments) {
+            price = price + appointment.getPrice();
+        }
+        return String.valueOf(price);
     }
 }

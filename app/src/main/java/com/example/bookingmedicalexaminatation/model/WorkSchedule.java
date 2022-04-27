@@ -10,11 +10,13 @@ public class WorkSchedule implements Serializable {
     private String from;
     private String to;
     private String price;
+    private int totalPatient;
+    private int maxPatient;
 
     public WorkSchedule() {
     }
 
-    public WorkSchedule(String id, String userName, String date, String place, String from, String to, String price) {
+    public WorkSchedule(String id, String userName, String date, String place, String from, String to, String price, int totalPatient, int maxPatient) {
         this.id = id;
         this.userName = userName;
         this.date = date;
@@ -22,6 +24,8 @@ public class WorkSchedule implements Serializable {
         this.from = from;
         this.to = to;
         this.price = price;
+        this.totalPatient = totalPatient;
+        this.maxPatient = maxPatient;
     }
 
     public String getId() {
@@ -78,5 +82,21 @@ public class WorkSchedule implements Serializable {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public int getTotalPatient() {
+        return totalPatient;
+    }
+
+    public void setTotalPatient(int totalPatient) {
+        this.totalPatient = totalPatient;
+    }
+
+    public int getMaxPatient() {
+        return maxPatient;
+    }
+
+    public void setMaxPatient(int maxPatient) {
+        this.maxPatient = maxPatient;
     }
 }

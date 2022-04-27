@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.bookingmedicalexaminatation.R;
 import com.example.bookingmedicalexaminatation.databinding.FragmentMoreBinding;
 import com.example.bookingmedicalexaminatation.model.Doctor;
 import com.example.bookingmedicalexaminatation.model.Patient;
@@ -25,6 +26,8 @@ import com.example.bookingmedicalexaminatation.view.profile.doctor.DoctorProfile
 import com.example.bookingmedicalexaminatation.view.profile.patient.PatientProfileActivity;
 import com.example.bookingmedicalexaminatation.viewmodel.BaseViewModel;
 import com.example.bookingmedicalexaminatation.viewmodel.MoreViewModel;
+
+import java.util.Locale;
 
 public class MoreFragment extends Fragment {
     private FragmentMoreBinding binding;
@@ -99,6 +102,11 @@ public class MoreFragment extends Fragment {
                     binding.name.setText(doctor.getFullName());
                     binding.dateOfBirth.setText(doctor.getDateOfBirth());
                     binding.gender.setText(doctor.getGender());
+                    if(doctor.getGender().toLowerCase(Locale.ROOT).equals("Nam".toLowerCase(Locale.ROOT))){
+                        binding.avatarImage.setImageResource(R.drawable.doctor_man);
+                    }else {
+                        binding.avatarImage.setImageResource(R.drawable.doctor_woman);
+                    }
                 }
             });
         } else {
@@ -108,9 +116,21 @@ public class MoreFragment extends Fragment {
                     binding.name.setText(patient.getFullName());
                     binding.dateOfBirth.setText(patient.getDateOfBirth());
                     binding.gender.setText(patient.getGender());
+                    if(patient.getGender().toLowerCase(Locale.ROOT).equals("Nam".toLowerCase(Locale.ROOT))){
+                        binding.avatarImage.setImageResource(R.drawable.man);
+                    }else {
+                        binding.avatarImage.setImageResource(R.drawable.woman);
+                    }
                 }
             });
         }
         moreViewModel.getAccount();
+
+        if(moreViewModel.getRole().equals(Const.ADMIN_ROLE)){
+            binding.name.setText("Admin");
+            binding.dateOfBirth.setVisibility(View.INVISIBLE);
+            binding.gender.setVisibility(View.INVISIBLE);
+            binding.profile.setVisibility(View.GONE);
+        }
     }
 }

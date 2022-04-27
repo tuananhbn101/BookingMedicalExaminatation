@@ -11,11 +11,12 @@ public class Appointment {
     private String place;
     private boolean hasInsurance;
     private String status;
+    private long price;
 
     public Appointment() {
     }
 
-    public Appointment(String id, String doctorUserName, String doctorFullName, String patientUserName, String patientFullName, String date, String doctorSpecialist, String place, boolean hasInsurance, String status) {
+    public Appointment(String id, String doctorUserName, String doctorFullName, String patientUserName, String patientFullName, String date, String doctorSpecialist, String place, boolean hasInsurance, String status, long price) {
         this.id = id;
         this.doctorUserName = doctorUserName;
         this.doctorFullName = doctorFullName;
@@ -26,6 +27,7 @@ public class Appointment {
         this.place = place;
         this.hasInsurance = hasInsurance;
         this.status = status;
+        this.price = price;
     }
 
     public String getId() {
@@ -106,5 +108,13 @@ public class Appointment {
 
     public void setHasInsurance(boolean hasInsurance) {
         this.hasInsurance = hasInsurance;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
     }
 }

@@ -6,11 +6,13 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bookingmedicalexaminatation.R;
 import com.example.bookingmedicalexaminatation.databinding.FragmentPatientItemBinding;
 import com.example.bookingmedicalexaminatation.model.Patient;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHolder> {
     private List<Patient> patients;
@@ -29,11 +31,16 @@ public class PatientAdapter extends RecyclerView.Adapter<PatientAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.binding.name.setText("Bs. " + patients.get(position).getFullName());
+        holder.binding.name.setText("BN. " + patients.get(position).getFullName());
         holder.binding.dateOfBirth.setText(patients.get(position).getDateOfBirth());
         holder.binding.gender.setText(patients.get(position).getGender());
         holder.binding.phoneNumber.setText(patients.get(position).getPhone());
         holder.binding.address.setText(patients.get(position).getAddress());
+        if(patients.get(position).getGender().toLowerCase(Locale.ROOT).equals("Nam".toLowerCase())){
+            holder.binding.avatar.setImageResource(R.drawable.man);
+        }else {
+            holder.binding.avatar.setImageResource(R.drawable.woman);
+        }
         holder.binding.getRoot().setOnClickListener(view -> onClickListener.onItemClick(patients.get(position)));
     }
 

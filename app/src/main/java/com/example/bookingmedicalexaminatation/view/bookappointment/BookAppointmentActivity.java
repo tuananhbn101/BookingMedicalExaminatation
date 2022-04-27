@@ -111,6 +111,7 @@ public class BookAppointmentActivity extends AppCompatActivity {
                 appointment.setStatus(Const.Configure.WAIT_CONFIRM);
                 appointment.setPatientUserName(patient.getUserName());
                 appointment.setPatientFullName(patient.getFullName());
+                appointment.setPrice(Long.parseLong(workSchedule.getPrice()));
                 if (binding.has.isChecked()) {
                     appointment.setHasInsurance(true);
                 } else {

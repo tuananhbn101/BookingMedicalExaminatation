@@ -142,10 +142,14 @@ public class ChooseDateActivity extends AppCompatActivity {
                     for (WorkSchedule workSchedule: workSchedules
                          ) {
                         if(workSchedule.getDate().equals(dateChoose)){
-                            Intent returnIntent = new Intent();
-                            returnIntent.putExtra(Const.Configure.DATE_RESULT, workSchedule);
-                            setResult(Activity.RESULT_OK, returnIntent);
-                            finish();
+                            if(workSchedule.getTotalPatient()<workSchedule.getMaxPatient()){
+                                Intent returnIntent = new Intent();
+                                returnIntent.putExtra(Const.Configure.DATE_RESULT, workSchedule);
+                                setResult(Activity.RESULT_OK, returnIntent);
+                                finish();
+                            }else {
+                                Toast.makeText(getApplicationContext(),"Bác sỹ đã đủ bệnh nhân. Vui lòng chọn ngày khác",Toast.LENGTH_SHORT).show();
+                            }
                         }
                     }
                 } else {
