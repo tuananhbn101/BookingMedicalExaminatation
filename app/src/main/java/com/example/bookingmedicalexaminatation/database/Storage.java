@@ -26,6 +26,10 @@ public class Storage {
         return sharedPreferences.getString(Const.Account.USER_NAME, "");
     }
 
+    public String getFullName() {
+        return sharedPreferences.getString(Const.Account.FULL_NAME, "");
+    }
+
     public void putAccountId(String data) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(Const.Account.ACCOUNT_ID, data);

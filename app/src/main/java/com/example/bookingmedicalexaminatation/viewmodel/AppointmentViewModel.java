@@ -42,7 +42,8 @@ public class AppointmentViewModel extends BaseViewModel implements Service.Appoi
     @Override
     public void getAppointmentsSuccess(List<Appointment> appointmentsResponse) {
         for (int i = 0; i < appointmentsResponse.size(); i++) {
-            if(appointmentsResponse.get(i).getStatus().equals(Const.Configure.HISTORY)){
+            if (appointmentsResponse.get(i).getStatus().equals(Const.Configure.HISTORY)
+                    || appointmentsResponse.get(i).getStatus().equals(Const.Configure.COMPLETED)) {
                 appointmentsResponse.remove(i);
             }
         }

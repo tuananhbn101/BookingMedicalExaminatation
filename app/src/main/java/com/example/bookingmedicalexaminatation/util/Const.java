@@ -13,6 +13,7 @@ public interface Const {
         String USER_NAME = "user_name";
         String PASS_WORD = "pass_word";
         String USER_ROLE = "user_role";
+        String FULL_NAME = "full_name";
     }
 
     interface Configure {
@@ -22,6 +23,7 @@ public interface Const {
         String WAIT_CONFIRM = "wait_confirm";
         String CONFIRM = "confirm";
         String HISTORY = "history";
+        String COMPLETED = "completed";
     }
 }
 

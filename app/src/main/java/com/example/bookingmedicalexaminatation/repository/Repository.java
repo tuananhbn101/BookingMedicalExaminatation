@@ -65,5 +65,17 @@ public class Repository {
     public void createContact(Contact contact, Service.ContactCallBack callBack) {
         service.createContact(contact,callBack);
     }
+
+    public void rate(String userName, int rate, Service.CallBack callBack){
+        service.rate(userName,rate,callBack);
+    }
+
+    public void getContacts(String doctorUserName, Service.ContactCallBack callBack) {
+        service.getContacts(doctorUserName,callBack);
+    }
+
+    public void getContacts( Service.ContactCallBack callBack) {
+        service.getContacts(callBack);
+    }
 }
 

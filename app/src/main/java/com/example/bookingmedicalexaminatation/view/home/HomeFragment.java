@@ -18,6 +18,7 @@ import com.example.bookingmedicalexaminatation.util.Const;
 import com.example.bookingmedicalexaminatation.view.appointment.AppointmentActivity;
 import com.example.bookingmedicalexaminatation.view.bookappointment.BookAppointmentActivity;
 import com.example.bookingmedicalexaminatation.view.contact.ContactActivity;
+import com.example.bookingmedicalexaminatation.view.contact.ContactDetailActivity;
 import com.example.bookingmedicalexaminatation.view.more.view.IntroduceActivity;
 import com.example.bookingmedicalexaminatation.view.profile.doctor.DoctorActivity;
 import com.example.bookingmedicalexaminatation.view.profile.patient.PatientActivity;
@@ -87,7 +88,14 @@ public class HomeFragment extends Fragment {
 
         binding.introduce.setOnClickListener(view -> startActivity(new Intent(getContext(), IntroduceActivity.class)));
 
-        binding.contact.setOnClickListener(view -> startActivity(new Intent(getContext(), ContactActivity.class)));
+        binding.contact.setOnClickListener(view -> {
+            if (storage.getRole(Const.Account.USER_ROLE).equals(Const.DOCTOR_ROLE)
+                    || storage.getRole(Const.Account.USER_ROLE).equals(Const.ADMIN_ROLE)) {
+                startActivity(new Intent(getContext(), ContactActivity.class));
+            } else {
+                startActivity(new Intent(getContext(), ContactDetailActivity.class));
+            }
+        });
 
         binding.registerWorkSchedule.setOnClickListener(view -> startActivity(new Intent(getContext(), WorkScheduleActivity.class)));
     }

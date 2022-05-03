@@ -29,8 +29,9 @@ public class HistoryViewModel extends BaseViewModel implements Service.Appointme
 
     @Override
     public void getAppointmentsSuccess(List<Appointment> appointmentsResponse) {
-        for (int i = 0; i < appointmentsResponse.size(); i++) {
-            if(!appointmentsResponse.get(i).getStatus().equals(Const.Configure.HISTORY)){
+        for (int i = appointmentsResponse.size() - 1; i >= 0; i--) {
+            if (appointmentsResponse.get(i).getStatus().equals(Const.Configure.WAIT_CONFIRM)
+                    || appointmentsResponse.get(i).getStatus().equals(Const.Configure.CONFIRM)) {
                 appointmentsResponse.remove(i);
             }
         }

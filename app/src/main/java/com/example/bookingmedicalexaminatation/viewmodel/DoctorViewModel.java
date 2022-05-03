@@ -51,4 +51,8 @@ public class DoctorViewModel extends UserViewModel {
     public void updateDoctor(Doctor doctor) {
         repository.updateAccount(doctor, this);
     }
+
+    public void rate(String userName,int rate){
+        repository.rate(userName,rate,this);
+    }
 }

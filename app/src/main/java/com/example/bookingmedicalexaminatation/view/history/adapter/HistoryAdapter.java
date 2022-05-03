@@ -45,6 +45,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
                 holder.binding.rate.setBackgroundResource(R.color.color_primary);
                 holder.binding.rate.setText("Đánh giá");
                 holder.binding.rate.setOnClickListener(view -> onClickListener.onRateClick(appointmentList.get(position)));
+            } else if (appointmentList.get(position).getStatus().equals(Const.Configure.COMPLETED)) {
+                holder.binding.rate.setVisibility(View.GONE);
             }
         }
     }

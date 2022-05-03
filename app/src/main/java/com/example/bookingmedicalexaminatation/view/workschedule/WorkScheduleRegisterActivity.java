@@ -99,6 +99,7 @@ public class WorkScheduleRegisterActivity extends AppCompatActivity {
                 workSchedule.setFrom(binding.from.getText().toString().trim());
                 workSchedule.setTo(binding.to.getText().toString().trim());
                 workSchedule.setPrice(binding.price.getText().toString().trim());
+                workSchedule.setMaxPatient(Integer.parseInt(binding.maxPatient.getText().toString().trim()));
                 workScheduleViewModel.registerWorkSchedule(workSchedule);
             }
         });

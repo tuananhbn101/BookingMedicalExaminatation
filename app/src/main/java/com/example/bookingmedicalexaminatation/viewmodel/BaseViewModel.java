@@ -23,4 +23,8 @@ public class BaseViewModel extends AndroidViewModel {
     public String getUserName(){
         return storage.getUserName();
     }
+
+    public String getFullName(){
+        return storage.getFullName();
+    }
 }

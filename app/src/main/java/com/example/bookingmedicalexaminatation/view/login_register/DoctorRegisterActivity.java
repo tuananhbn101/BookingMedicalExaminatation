@@ -14,6 +14,9 @@ import com.example.bookingmedicalexaminatation.util.ModelUtil;
 import com.example.bookingmedicalexaminatation.util.TextInputUtil;
 import com.example.bookingmedicalexaminatation.viewmodel.RegisterViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DoctorRegisterActivity extends AppCompatActivity {
     private ActivityDoctorRegisterBinding binding;
     private RegisterViewModel registerViewModel;
@@ -83,7 +86,7 @@ public class DoctorRegisterActivity extends AppCompatActivity {
         doctor.setPhoneNumber(binding.etPhone.getText().toString().trim());
         doctor.setSpecialist(binding.etSpecialist.getText().toString().trim());
         doctor.setNote(binding.etNote.getText().toString().trim());
-        doctor.setRate(100);
+        doctor.setRate("5");
         registerViewModel.registerDoctor(doctor);
     }
 

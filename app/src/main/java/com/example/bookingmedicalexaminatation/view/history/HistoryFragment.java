@@ -52,6 +52,10 @@ public class HistoryFragment extends Fragment {
         adapter = new HistoryAdapter();
         appointmentViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
 
+        if (appointmentViewModel.getRole().equals(Const.PATIENT_ROLE)) {
+            binding.statistical.setVisibility(View.GONE);
+        }
+
         RecyclerView.LayoutManager manager = new LinearLayoutManager(getContext());
         binding.history.setLayoutManager(manager);
         binding.history.setAdapter(adapter);
@@ -61,8 +65,9 @@ public class HistoryFragment extends Fragment {
             @Override
             public void onRateClick(Appointment appointment) {
                 if (appointmentViewModel.getRole().equals(Const.PATIENT_ROLE)) {
-                    RateDialog rateDialog = new RateDialog();
+                    RateDialog rateDialog = RateDialog.newInstance(appointment.getDoctorUserName(), appointment);
                     rateDialog.show(getChildFragmentManager(), "RateDialog");
+                    rateDialog.setCallBack(() -> appointmentViewModel.getAppointmentList());
                 }
             }
         });
@@ -78,6 +83,7 @@ public class HistoryFragment extends Fragment {
                 }
             }
         });
+
         appointmentViewModel.getAppointmentList();
     }
 

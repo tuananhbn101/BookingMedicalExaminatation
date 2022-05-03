@@ -119,32 +119,32 @@ public class Service {
                                 Admin admin = snapshot.getChildren().iterator().next().getValue(Admin.class);
                                 if (admin != null) {
                                     if (password.equals(admin.getPassword())) {
-                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(), userRole);
+                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(), userRole,"");
                                     } else {
-                                        loginCallBack.loginSuccess("", "");
+                                        loginCallBack.loginSuccess("", "","");
                                     }
                                 }
                             } else if (userRole.equals(Const.PATIENT_ROLE)) {
                                 Patient patient = snapshot.getChildren().iterator().next().getValue(Patient.class);
                                 if (patient != null) {
                                     if (password.equals(patient.getPassword())) {
-                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(), userRole);
+                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(), userRole,patient.getFullName());
                                     } else {
-                                        loginCallBack.loginSuccess("", "");
+                                        loginCallBack.loginSuccess("", "","");
                                     }
                                 }
                             } else {
                                 Doctor doctor = snapshot.getChildren().iterator().next().getValue(Doctor.class);
                                 if (doctor != null) {
                                     if (password.equals(doctor.getPassWord())) {
-                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(), userRole);
+                                        loginCallBack.loginSuccess(snapshot.getChildren().iterator().next().getKey(), userRole,doctor.getFullName());
                                     } else {
-                                        loginCallBack.loginSuccess("", "");
+                                        loginCallBack.loginSuccess("", "","");
                                     }
                                 }
                             }
                         } else {
-                            loginCallBack.loginSuccess("", "");
+                            loginCallBack.loginSuccess("", "","");
                         }
                     }
 
@@ -194,6 +194,33 @@ public class Service {
                         } else {
                             callback.requestDoctorSuccess(task.getResult().getValue(Doctor.class));
                         }
+                    }
+                });
+            }
+        });
+    }
+
+    public void rate(String userName, int rate, CallBack callBack) {
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                databaseReference.child(Const.DOCTOR_ROLE).orderByChild("userName").equalTo(userName).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            Doctor doctor = snapshot.getChildren().iterator().next().getValue(Doctor.class);
+                            StringBuilder builder = new StringBuilder();
+                            builder.append(doctor.getRate()).append(",").append(rate);
+                            doctor.setRate(builder.toString());
+                            updateAccount(doctor, callBack);
+                        } else {
+
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
             }
@@ -353,18 +380,92 @@ public class Service {
 
     }
 
-    public void createContact(Contact contact,ContactCallBack callBack) {
+    public void createContact(Contact contact, ContactCallBack callBack) {
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 databaseReference.child(Const.CONTACT).child(contact.getId()).setValue(contact, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                        if(error!=null){
+                        if (error != null) {
                             callBack.createSuccess(false);
-                        }else {
+                        } else {
                             callBack.createSuccess(true);
                         }
+                    }
+                });
+            }
+        });
+    }
+
+    public void getContacts(String doctorUserName, ContactCallBack callBack) {
+        List<Contact> contacts = new ArrayList<>();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                databaseReference.child(Const.CONTACT).orderByChild("doctorUserName").equalTo(doctorUserName).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        Contact contact = snapshot.getValue(Contact.class);
+                        contacts.add(contact);
+                        callBack.requestContactsSuccess(contacts);
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+            }
+        });
+    }
+
+    public void getContacts(ContactCallBack callBack) {
+        List<Contact> contacts = new ArrayList<>();
+        executorService.execute(new Runnable() {
+            @Override
+            public void run() {
+                databaseReference.child(Const.CONTACT).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                        Contact contact = snapshot.getValue(Contact.class);
+                        contacts.add(contact);
+                        callBack.requestContactsSuccess(contacts);
+                    }
+
+                    @Override
+                    public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
                     }
                 });
             }
@@ -396,7 +497,7 @@ public class Service {
     }
 
     public interface LoginCallBack {
-        void loginSuccess(String accountId, String userRole);
+        void loginSuccess(String accountId, String userRole, String fullName);
     }
 
     public interface AppointmentCallBack {
@@ -405,7 +506,9 @@ public class Service {
         void getAppointmentsSuccess(List<Appointment> appointments);
     }
 
-    public interface ContactCallBack{
+    public interface ContactCallBack {
         void createSuccess(Boolean isSuccess);
+
+        void requestContactsSuccess(List<Contact> contacts);
     }
 }

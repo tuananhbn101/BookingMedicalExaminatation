@@ -55,6 +55,12 @@ public class MoreFragment extends Fragment {
         init();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        moreViewModel.getAccount();
+    }
+
     private void init() {
         baseViewModel = ViewModelProviders.of(this).get(BaseViewModel.class);
 

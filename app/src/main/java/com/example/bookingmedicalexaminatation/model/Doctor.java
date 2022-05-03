@@ -12,12 +12,12 @@ public class Doctor implements Serializable {
     private String specialist;
     private String phoneNumber;
     private String note;
-    private int rate;
+    private String rate;
 
     public Doctor() {
     }
 
-    public Doctor(String id, String userName, String passWord, String fullName, String gender, String dateOfBirth, String specialist, String phoneNumber, String note, int rate) {
+    public Doctor(String id, String userName, String passWord, String fullName, String gender, String dateOfBirth, String specialist, String phoneNumber, String note, String rate) {
         this.id = id;
         this.userName = userName;
         this.passWord = passWord;
@@ -103,11 +103,11 @@ public class Doctor implements Serializable {
         this.note = note;
     }
 
-    public int getRate() {
+    public String getRate() {
         return rate;
     }
 
-    public void setRate(int rate) {
+    public void setRate(String rate) {
         this.rate = rate;
     }
 }

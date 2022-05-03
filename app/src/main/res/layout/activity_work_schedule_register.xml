@@ -110,6 +110,21 @@
                 android:inputType="number"
                 android:paddingLeft="10dp" />
 
+            <TextView
+                style="@style/text_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Số bệnh nhân :" />
+
+            <EditText
+                android:id="@+id/max_patient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:inputType="number"
+                android:paddingLeft="10dp" />
+
             <Button
                 android:id="@+id/register_work_schedule"
                 android:layout_width="match_parent"

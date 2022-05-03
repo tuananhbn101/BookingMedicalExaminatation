@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bookingmedicalexaminatation.databinding.FragmentDoctorItemBinding;
 import com.example.bookingmedicalexaminatation.model.Doctor;
+import com.example.bookingmedicalexaminatation.util.ModelUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.name.setText(doctors.get(position).getFullName());
         holder.binding.specialist.setText("Chuyên khoa : " + doctors.get(position).getSpecialist());
-        holder.binding.rate.setText(doctors.get(position).getRate() + " %");
+        holder.binding.rate.setText(ModelUtil.ratePercent(doctors.get(position).getRate()) + " %");
         holder.binding.getRoot().setOnClickListener(view -> {
             onItemClickListener.onItemClick(doctors.get(position));
         });
